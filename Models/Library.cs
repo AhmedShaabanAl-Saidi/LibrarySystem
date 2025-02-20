@@ -13,39 +13,39 @@ namespace LibrarySystem.Models
 
         public Library() 
         {
-            books = new List<Book>();
-            users = new List<User>();
+            Books = new List<Book>();
+            Users = new List<User>();
         }
 
         public void AddBook(Book book)
         {
-            books.Add(book);
+            Books.Add(book);
         }
 
         public void AddUser(User user)
         {
-            users.Add(user);
+            Users.Add(user);
         }
 
         public void RemoveBook(Book book) 
         {
-            books.Remove(book);
+            Books.Remove(book);
         }
 
         public void RemoveUser(User user)
         {
-            users.Remove(user);
+            Users.Remove(user);
         }
 
         public List<Book> SearchBooks(string criteria)
         {
-            return books.FindAll(book => book.Title.Contains(criteria) 
+            return Books.FindAll(book => book.Title.Contains(criteria) 
             || book.Author.Contains(criteria) || book.Category.Contains(criteria));
         }
 
         public List<User> SearchUsers(string criteria)
         {
-            return users.FindAll(user => user.Name.Contains(criteria) 
+            return Users.FindAll(user => user.Name.Contains(criteria) 
             || user.Id.Contains(criteria));
         }
 
@@ -55,15 +55,15 @@ namespace LibrarySystem.Models
 
             Console.WriteLine("***** All Books *****");
 
-            books.ForEach(book => Console.WriteLine($"Title: {book.Title} Author: {book.Author} Category: {book.Category} ISBN: {book.ISBN}"));
+            Books.ForEach(book => Console.WriteLine($"Title: {book.Title} Author: {book.Author} Category: {book.Category} ISBN: {book.ISBN}"));
 
             Console.WriteLine("***** All Users *****");
 
-            users.ForEach(user => Console.WriteLine($"Name: {user.Name} ID: {user.Id}"));
+            Users.ForEach(user => Console.WriteLine($"Name: {user.Name} ID: {user.Id}"));
 
             Console.WriteLine("***** Borrowed Books *****");
 
-            foreach (var user in users)
+            foreach (var user in Users)
             {
                 if (user.BorrowedBooks.Count > 0)
                 {
